@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="container">
+  <form class="login-form">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Log in to angular-social</h1>
+    <div class="social-login">
+      <a class="btn btn-dark btn-lg btn-block social-btn btn-github"
+              role="button" aria-disabled="true"
+              [attr.href]="GITHUB_AUTH_URL">
+        <span><fa-icon [icon]="faGithub"></fa-icon>Log in with github</span>
+      </a>
+    </div>
+
+    <div class="or-separator text-center">
+      <span class="or-text">OR</span>
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="email address" required=""
+             autofocus="">
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="inputPassword" class="form-control form-control-lg" placeholder="password"
+             required="">
+    </div>
+
+    <button class="btn btn-success btn-lg btn-block" type="submit">
+      <fa-icon [icon]="faSignInAlt"></fa-icon>
+      Login
+    </button>
+  </form>
+</div>

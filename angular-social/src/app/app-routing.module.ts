@@ -1,10 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {HomeComponent} from './home/home.component';
+import {AuthResolver} from './auth/auth-resolver.service';
+import {ProfileComponent} from './profile/profile.component';
+import {UserResolver} from './profile/user-resolver.service';
 
 const routes: Routes = [
-
+  {
+    path: '',
+    component: HomeComponent,
+    resolve: {
+      isAuthenticated: AuthResolver
+    }
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -16,14 +26,23 @@ const routes: Routes = [
     path: 'signup',
     component: RegisterComponent,
   },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    resolve: {
+      currentUser: UserResolver
+    }
+  },
   // otherwise redirect to home
-  { path: '**',
+  {
+    path: '**',
     redirectTo: ''
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
