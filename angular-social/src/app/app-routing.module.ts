@@ -5,7 +5,6 @@ import {RegisterComponent} from './register/register.component';
 import {HomeComponent} from './home/home.component';
 import {AuthResolver} from './auth/auth-resolver.service';
 import {ProfileComponent} from './profile/profile.component';
-import {UserResolver} from './profile/user-resolver.service';
 
 const routes: Routes = [
   {
@@ -17,10 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
-    // resolve: {
-    //   isAuthenticated: LoginAuthResolver
-    // }
+    component: LoginComponent
   },
   {
     path: 'signup',
@@ -28,10 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent,
-    resolve: {
-      currentUser: UserResolver
-    }
+    component: ProfileComponent
   },
   // otherwise redirect to home
   {

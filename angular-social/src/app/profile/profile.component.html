@@ -1,1 +1,23 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <div class="container">
+    <div class="profile-info">
+      <div class="profile-avatar">
+        <div *ngIf="this.currentUser.imageUrl; then imgBlock else nameBlock"></div>
+        <ng-template #imgBlock>
+          <img *ngIf="this.currentUser.imageUrl"
+               [attr.src]="this.currentUser.imageUrl"
+               [attr.alt]="this.currentUser.name"/>
+        </ng-template>
+        <ng-template #nameBlock>
+          <div className="text-avatar">
+            <span>{{this.currentUser.name}}</span>
+          </div>
+        </ng-template>
+      </div>
+      <div class="profile-name">
+        <h2>{{this.currentUser.name}}</h2>
+        <p class="profile-email">{{this.currentUser.email}}</p>
+      </div>
+    </div>
+  </div>
+</div>

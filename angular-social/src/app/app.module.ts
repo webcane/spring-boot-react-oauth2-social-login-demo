@@ -11,7 +11,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {AuthResolver} from './auth/auth-resolver.service';
 import {ProfileComponent} from './profile/profile.component';
-import {UserResolver} from './profile/user-resolver.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import {UserResolver} from './profile/user-resolver.service';
   ],
   providers: [
     AuthResolver,
-    UserResolver,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
