@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<app-header></app-header>
+<app-header [isAuthenticated]="this.authService.isAuthenticated()"></app-header>
 
 <!-- Begin page content -->
 <main class="container">
