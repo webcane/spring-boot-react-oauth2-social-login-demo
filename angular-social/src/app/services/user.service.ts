@@ -18,6 +18,13 @@ export class UserService {
   constructor(private api: ApiService) {
   }
 
+  login(email:string, password:string ) {
+    return this.api.post<User>('/auth/login', {email, password});
+      // this is just the HTTP call,
+      // we still need to handle the reception of the token
+     // .shareReplay();
+  }
+
   public getCurrentUser(): Observable<User> {
     this.api.get('/user/me').subscribe(
       (usr) => {
