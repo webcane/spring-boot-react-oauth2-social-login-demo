@@ -13,34 +13,34 @@ export class ApiService {
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.apiUrl}${path}`, {params})
-      .pipe(catchError(this.formatErrors));
+    return this.http.get(`${environment.apiBaseUrl}${path}`, {params})
+      .pipe(catchError(ApiService.formatErrors));
   }
 
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
-      `${environment.apiUrl}${path}`,
+      `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body)
-    ).pipe(catchError(this.formatErrors));
+    ).pipe(catchError(ApiService.formatErrors));
   }
 
   post<T = unknown>(path: string, body: Object = {}): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('content-type', 'application/json');
     return this.http.post<T>(
-      `${environment.apiUrl}${path}`,
+      `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body),
       {headers}
-    ).pipe(catchError(this.formatErrors));
+    ).pipe(catchError(ApiService.formatErrors));
   }
 
   delete(path): Observable<any> {
     return this.http.delete(
-      `${environment.apiUrl}${path}`
-    ).pipe(catchError(this.formatErrors));
+      `${environment.apiBaseUrl}${path}`
+    ).pipe(catchError(ApiService.formatErrors));
   }
 
-  private formatErrors(error: any) {
+  private static formatErrors(error: any) {
     return throwError(error.error);
   }
 }
